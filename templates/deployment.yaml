@@ -234,13 +234,13 @@ spec:
         - name: git-volume
           gitRepo:
             repository: "https://github.com/moondev/spinnaker-helm.git"
-            revision: "d0fb5e847a92011953152c204c11ae8ea2ba3b91"
+            revision: "8063f42013a67b2bd54ce4760658fd1e6d7fbc3f"
       containers:
         - name: deck
           image: nginx:latest
           volumeMounts:
             - name: "git-volume"
-              mountPath: /opt/webroot
+              mountPath: /opt/deck
             - name: "spinconf"
               mountPath: /etc/nginx
               subPath: nginx.conf
