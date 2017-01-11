@@ -5,18 +5,19 @@ webpackJsonp([1,3],[
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	var feedbackUrl = process.env.FEEDBACK_URL;
-	var gateHost = "/gate" || 'http://localhost:8084';
-	var bakeryHost = process.env.BAKERY_HOST || 'http://localhost:8087';
-	var bakeryDetailUrl = "/bakery" || bakeryHost + '/#/?region={{context.region}}&package={{context.package}}&detail=bake:{{context.status.resourceId}}';
+	var gateHost = "/gate";
+	var bakeryHost = '/bakery';
+	//var bakeryDetailUrl = "/bakery" + '/#/?region={{context.region}}&package={{context.package}}&detail=bake:{{context.status.resourceId}}';
+  var bakeryDetailUrl = "/bakery/api/v1/global/logs/{{context.status.resourceId}}?html=true";
 	var authEndpoint = process.env.AUTH_ENDPOINT || gateHost + '/auth/user';
-	var authEnabled =  true ? false : true;
-	var netflixMode = process.env.NETFLIX_MODE === 'true' ? true : false;
-	var chaosEnabled = netflixMode || process.env.CHAOS_ENABLED === 'true' ? true : false;
-	var fiatEnabled = process.env.FIAT_ENABLED === 'true' ? true : false;
+	var authEnabled =  false;
+	var netflixMode = false;
+	var chaosEnabled = true;
+	var fiatEnabled = false;
 	var entityTagsEnabled = process.env.ENTITY_TAGS_ENABLED == 'true' ? true : false;
 
 	window.spinnakerSettings = {
-	  checkForUpdates: true,
+	  checkForUpdates: false,
 	  defaultProviders: ['aws', 'gce', 'azure', 'cf', 'kubernetes', 'titus', 'openstack'],
 	  feedbackUrl: feedbackUrl,
 	  gateUrl: gateHost,
@@ -69,7 +70,7 @@ webpackJsonp([1,3],[
 	    },
 	    kubernetes: {
 	      defaults: {
-	        account: 'my-kubernetes-account',
+	        account: 'kubernetes',
 	        namespace: 'default'
 	      }
 	    },
@@ -99,24 +100,25 @@ webpackJsonp([1,3],[
 	      botName: 'spinnakerbot'
 	    }
 	  },
-	  authEnabled: authEnabled,
+	  authEnabled: false,
 	  authTtl: 600000,
 	  gitSources: ['stash', 'github'],
 	  triggerTypes: ['git', 'pipeline', 'docker', 'cron', 'jenkins'],
 	  feature: {
 	    entityTags: entityTagsEnabled,
-	    fiatEnabled: fiatEnabled,
+	    fiatEnabled: false,
 	    pipelines: true,
-	    notifications: false,
+	    notifications: true,
 	    fastProperty: true,
 	    vpcMigrator: true,
 	    clusterDiff: false,
-	    roscoMode: false,
-	    netflixMode: netflixMode,
+	    roscoMode: true,
+	    netflixMode: false,
 	    chaosMonkey: chaosEnabled,
+      dockerBake: true,
 	    // whether stages affecting infrastructure (like "Create Load Balancer") should be enabled or not
 	    infrastructureStages: process.env.INFRA_STAGES === 'enabled',
-	    jobs: false,
+	    jobs: true,
 	    snapshots: false
 	  }
 	};

@@ -193,37 +193,6 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: deck
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: deck
-    spec:
-      volumes:
-        - configMap:
-            name: "spinconf"
-          name: "spinconf"
-      containers:
-        - name: deck
-          image: nginx:latest
-          volumeMounts:
-            - name: "spinconf"
-              mountPath: /opt/deck
-              subPath: settings.js
-            - name: "spinconf"
-              mountPath: /etc/nginx
-              subPath: nginx.conf
-          ports:
-            - containerPort: 80
-              protocol: TCP
-
----
-
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
   name: gate
 spec:
   replicas: 1
@@ -244,6 +213,39 @@ spec:
               mountPath: /opt/gate/config
           ports:
             - containerPort: 8084
+              protocol: TCP
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: deck
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: deck
+    spec:
+      volumes:
+        - configMap:
+            name: "spinconf"
+          name: "spinconf"
+        - name: git-volume
+          gitRepo:
+            repository: "https://github.com/moondev/spinnaker-helm.git"
+            revision: "d0fb5e847a92011953152c204c11ae8ea2ba3b91"
+      containers:
+        - name: deck
+          image: nginx:latest
+          volumeMounts:
+            - name: "git-volume"
+              mountPath: /opt/webroot
+            - name: "spinconf"
+              mountPath: /etc/nginx
+              subPath: nginx.conf
+          ports:
+            - containerPort: 80
               protocol: TCP
 
 ---
