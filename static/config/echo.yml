@@ -1,0 +1,78 @@
+server:
+  port: 8089
+
+cassandra:
+  enabled: true
+  embedded: false
+  host: cassandra-service
+  keyspace: 'front50'
+  cluster: 'Test Cluster'
+  name: default
+  inMemory:
+     enabled: true
+
+spinnaker:
+  baseUrl: http://deck-service
+  cassandra:
+    enabled: true
+    embedded: false
+    host: cassandra-service
+    keyspace: 'front50'
+    cluster: 'Test Cluster'
+    name: default
+  inMemory:
+     enabled: true
+
+front50:
+  baseUrl: http://front50-service:8080
+
+orca:
+  baseUrl: http://orca-service:8083
+
+endpoints.health.sensitive: false
+
+slack:
+  enabled: false
+
+# spring:
+#   mail:
+#     host: ${mail.host}
+
+mail:
+  enabled: false
+  host: ${services.echo.notifications.mail.host}
+  from: ${services.echo.notifications.mail.fromAddress}
+
+hipchat:
+  enabled: false
+  baseUrl: ${services.echo.notifications.hipchat.url}
+  token: ${services.echo.notifications.hipchat.token}
+
+twilio:
+  enabled: false
+  baseUrl: ${services.echo.notifications.sms.url:https://api.twilio.com/}
+  account: ${services.echo.notifications.sms.account}
+  token: ${services.echo.notifications.sms.token}
+  from: ${services.echo.notifications.sms.from}
+
+scheduler:
+  enabled: false
+  threadPoolSize: 20
+  triggeringEnabled: true
+  pipelineConfigsPoller:
+    enabled: true
+    pollingIntervalMs: 30000
+  cron:
+    timezone: west
+
+spectator:
+  applicationName: ${spring.application.name}
+  webEndpoint:
+    enabled: false
+    prototypeFilter:
+      path: ${services.spectator.webEndpoint.prototypeFilter.path:}
+
+  stackdriver:
+    enabled: false
+    projectName: ${services.stackdriver.projectName}
+    credentialsPath: ${services.stackdriver.credentialsPath}

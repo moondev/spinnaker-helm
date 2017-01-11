@@ -1,0 +1,30 @@
+redis:
+  connection: redis://redis-service:6379
+server:
+  port: 8084
+services:
+  clouddriver:
+    baseUrl: http://clouddriver-service:7002
+  deck:
+    baseUrl: http://deck-service
+  front50:
+    baseUrl: http://front50-service:8080
+  orca:
+    baseUrl: http://orca-service:8083
+  igor:
+    enabled: true
+    baseUrl: http://igor-service:8088
+  rosco:
+    enabled: true
+    baseUrl: http://rosco-service:8087
+  echo:
+    enabled: true
+    baseUrl: http://echo-service:8089
+
+  fiat:
+    enabled: false
+    autoConfig: false
+  flapjack:
+    enabled: false
+  mahe:
+    enabled: false

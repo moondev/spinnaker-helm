@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+cassandra:
+  enabled: true
+  embedded: false
+  host: cassandra-service
+  keyspace: 'front50'
+  cluster: 'Test Cluster'
+  name: default
+
+spinnaker:
+  cassandra:
+    enabled: true
+    embedded: false
+    cluster: 'Test Cluster'
+    host: cassandra-service
+    keyspace: 'front50'
+    name: default
+
+
+swagger:
+  enabled: true
+  title: Spinnaker Front50 API
+  description:
+  contact:
+  patterns:
+    - /default/.*
+    - /credentials.*
+    - /global/.*
+    - /notifications.*
+    - /pipelines.*
+    - /strategies.*
+    - /v2/.*
