@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ctop
+  labels:
+    app: ctop
+spec:
+  ports:
+    - port: 2376
+      targetPort: 2376
+  selector:
+    app: ctop
+    tier: ctop
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ctop
+  labels:
+    app: ctop
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ctop
+        tier: ctop
+    spec:
+      containers:
+      - image: chadmoon/docksock
+        name: ctop
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 2376
+          name: ctop
