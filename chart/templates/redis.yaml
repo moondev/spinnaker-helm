@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # namespace: spinnaker
+  name: redis
+  labels:
+    app: redis
+spec:
+  ports:
+    - port: 6379
+  selector:
+    app: redis
+    tier: redis
+  type: NodePort
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  # namespace: spinnaker
+  name: redis
+  labels:
+    app: redis
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: redis
+        tier: redis
+    spec:
+      containers:
+      - image: redis:latest
+        name: redis
+        ports:
+        - containerPort: 6379
+          name: redis
