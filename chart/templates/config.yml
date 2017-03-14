@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spinnaker-config
+data:
+{{ (.Files.Glob "static/*").AsConfig | indent 2 }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: spinnaker-config
+type: Opaque
+data:
+{{ (.Files.Glob "static/*").AsSecrets | indent 2 }}
