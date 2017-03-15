@@ -1,21 +1,27 @@
-# Default values for chart.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-replicaCount: 1
-image:
-  repository: nginx
-  tag: stable
-  pullPolicy: IfNotPresent
-service:
-  name: nginx
-  type: ClusterIP
-  externalPort: 80
-  internalPort: 80
-resources:
-  limits:
-    cpu: 100m
-    memory: 128Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
+front50:
+  repository: quay.io/spinnaker/front50
+  tag: v1.69.0
 
+clouddriver:
+  repository: quay.io/spinnaker/clouddriver
+  tag: v1.490.0
+
+igor:
+  repository: quay.io/spinnaker/orca
+  tag: v1.304.0
+
+echo:
+  repository: quay.io/spinnaker/echo
+  tag: v1.132.0
+
+gate:
+  repository: quay.io/spinnaker/gate
+  tag: v3.1.0
+
+igor:
+  repository: quay.io/spinnaker/igor
+  tag: v1.64.0
+
+deck:
+  repository: quay.io/spinnaker/deck
+  tag: v2.1028.0

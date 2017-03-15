@@ -32,7 +32,7 @@ spec:
         tier: clouddriver
     spec:
       containers:
-      - image: quay.io/spinnaker/clouddriver:v1.490.0
+      - image: {{.Values.clouddriver.image}}:{{.Values.clouddriver.tag}}
         name: clouddriver
 
         ports:

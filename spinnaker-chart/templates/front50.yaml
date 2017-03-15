@@ -32,7 +32,7 @@ spec:
         tier: front50
     spec:
       containers:
-      - image: quay.io/spinnaker/front50:v1.69.0
+      - image: {{.Values.front50.image}}:{{.Values.front50.tag}}
         name: front50
         ports:
         - containerPort: 8080

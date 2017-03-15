@@ -32,7 +32,7 @@ spec:
         tier: orca
     spec:
       containers:
-      - image: quay.io/spinnaker/orca:v1.304.0
+      - image: {{.Values.orca.image}}:{{.Values.orca.tag}}
         name: orca
         ports:
         - containerPort: 8083

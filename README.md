@@ -2,16 +2,19 @@
 
 ## Install Spinnaker on your kubernetes cluster with one command.
 
-Ensure kubectl is pointed at your cluster and helm is installed. You may need to `helm init` if you have not done so yet.
-
-Create a namespace for spinnaker
+Ensure `kubectl` is pointed at your cluster
 ```
-kubectl create namespace spinnaker
+kubectl cluster-info
+```
+
+Initialize `helm`
+```
+helm init
 ```
 
 Install Spinnaker
 ```
-helm install --namespace spinnaker ./spinnaker-chart
+helm install --namespace spinnaker --name spinnaker ./spinnaker-chart/
 ```
 
 Wait until all pods are up
@@ -25,3 +28,12 @@ kubectl port-forward (kubectl get pods -l app=deck -o jsonpath='{.items[*].metad
 ```
 
 Spinnaker is now available for use at `http://localhost:9000`
+
+
+To delete the release and remove all Spinnaker components
+
+```
+helm delete spinnaker --purge
+```
+
+Versions of Spinnaker components can be edited in `spinnaker-chart/values.yaml`

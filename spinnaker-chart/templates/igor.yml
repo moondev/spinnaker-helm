@@ -32,7 +32,7 @@ spec:
         tier: igor
     spec:
       containers:
-      - image: quay.io/spinnaker/igor:v1.64.0
+      - image: {{.Values.igor.image}}:{{.Values.igor.tag}}
         name: igor
         ports:
         - containerPort: 8084

@@ -32,7 +32,7 @@ spec:
         tier: gate
     spec:
       containers:
-      - image: quay.io/spinnaker/gate:v3.1.0
+      - image: {{.Values.gate.image}}:{{.Values.gate.tag}}
         name: gate
         ports:
         - containerPort: 8084

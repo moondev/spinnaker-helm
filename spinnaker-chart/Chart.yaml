@@ -1,4 +1,4 @@
 apiVersion: v1
 description: Spinnaker Helm Chart
-name: chart
+name: spinnaker
 version: 0.1.0

@@ -32,7 +32,7 @@ spec:
         tier: deck
     spec:
       containers:
-      - image: quay.io/spinnaker/deck:v2.1028.0
+      - image: {{.Values.deck.image}}:{{.Values.deck.tag}}
         name: deck
         ports:
         - containerPort: 9000
