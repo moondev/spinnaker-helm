@@ -6,7 +6,7 @@ clouddriver:
   repository: quay.io/spinnaker/clouddriver
   tag: v1.490.0
 
-igor:
+orca:
   repository: quay.io/spinnaker/orca
   tag: v1.304.0
 
