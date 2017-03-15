@@ -7,13 +7,15 @@ Ensure `kubectl` is pointed at your cluster
 kubectl cluster-info
 ```
 
-Initialize [`helm`] on your cluster(https://github.com/kubernetes/helm/blob/master/docs/install.md)
+Initialize [helm] on your cluster(https://github.com/kubernetes/helm/blob/master/docs/install.md)
 ```
 helm init
 ```
 
-Install Spinnaker in it's own namespace
+Clone repo and install Spinnaker in it's own namespace
 ```
+git clone https://github.com/moondev/spinnaker-helm.git; cd spinnaker-helm
+
 helm install --namespace spinnaker --name spinnaker ./spinnaker-chart
 ```
 
