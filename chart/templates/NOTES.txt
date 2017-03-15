@@ -1,2 +1,12 @@
-1. View spinnaker by finding the deck pod with "kubectl get pods" 
-2. Port forward into the pod with kubectl port-forward DECKPOD 9000:9000
+
+=======================
+
+1. Wait until all pod are up with 
+kubectl get pods --all-namespaces
+
+2. Forward deck to localhost:9000 with
+kubectl port-forward (kubectl get pods -l app=deck -o jsonpath='{.items[*].metadata.name}') 9000:9000
+
+3. Open http://localhost:9000 to start using spinnaker
+
+=======================
