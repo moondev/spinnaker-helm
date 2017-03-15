@@ -14,7 +14,7 @@ helm init
 
 Install Spinnaker
 ```
-helm install --namespace spinnaker --name spinnaker ./spinnaker-chart/
+helm install --namespace spinnaker --name spinnaker ./spinnaker-chart
 ```
 
 Wait until all pods are up
