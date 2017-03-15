@@ -2,7 +2,7 @@
 =======================
 
 1. Wait until all pod are up with 
-kubectl get pods --all-namespaces
+kubectl get pods --namespace spinnaker
 
 2. Forward deck to localhost:9000 with
 kubectl port-forward (kubectl get pods -l app=deck -o jsonpath='{.items[*].metadata.name}') 9000:9000
