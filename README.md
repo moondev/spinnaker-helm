@@ -1,6 +1,7 @@
 # Spinnaker Helm Chart
 
 ## Install Spinnaker on your kubernetes cluster with one command.
+### Clouddriver is also auto-configured to deploy to the same cluster.
 
 Ensure `kubectl` is pointed at your cluster
 ```
