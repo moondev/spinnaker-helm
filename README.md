@@ -8,7 +8,7 @@ Ensure `kubectl` is pointed at your cluster
 kubectl cluster-info
 ```
 
-Initialize [helm] on your cluster(https://github.com/kubernetes/helm/blob/master/docs/install.md)
+Initialize `helm` on your cluster
 ```
 helm init
 ```
