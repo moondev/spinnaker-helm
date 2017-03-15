@@ -26,7 +26,7 @@ kubectl get pods --namespace spinnaker
 
 Forward port 9000 to deck pod.
 ```
-kubectl port-forward (kubectl get pods -l app=deck -o jsonpath='{.items[*].metadata.name}') 9000:9000
+kubectl --namespace spinnaker port-forward (kubectl --namespace spinnaker get pods -l app=deck -o jsonpath='{.items[*].metadata.name}') 9000:9000
 ```
 
 Spinnaker is now available for use at `http://localhost:9000`
