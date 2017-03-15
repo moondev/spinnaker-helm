@@ -12,7 +12,7 @@ Initialize `helm`
 helm init
 ```
 
-Install Spinnaker
+Install Spinnaker in it's own namespace
 ```
 helm install --namespace spinnaker --name spinnaker ./spinnaker-chart
 ```
