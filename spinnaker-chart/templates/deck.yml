@@ -49,3 +49,19 @@ spec:
         configMap:
           name: spinnaker-config
           defaultMode: 0777
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+ name: dashboard-ingress
+ namespace: spinnaker
+spec:
+ rules:
+   - host: spinnaker.127.0.0.1.xip.io
+     http:
+       paths:
+         - path: /
+           backend:
+             serviceName: deck
+             servicePort: 80
